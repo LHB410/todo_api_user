@@ -25,7 +25,7 @@ class TodoForm extends Component {
         method: "POST",
         mode: "cors",
         body: data
-      }).then(response => response.json)
+      }).then(response => response.json())
       .then(response => this.props.updateTodoList(response))
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
+import Grid from "@mui/material/Grid";
 
 const  api_url = "http://localhost:3001/api/v1/todos"
 
@@ -40,14 +41,17 @@ class TodoList extends Component {
     render() {
          console.log(this.state.items)
         return (
-            <div>
-                <TodoForm api_url={api_url} updateTodoList={this.updateTodoList} />
-                <ul id="todo_list">
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <TodoForm api_url={api_url} updateTodoList={this.updateTodoList} />
+                </Grid>
+                <Grid item xs={12}id="todo_list">
                     {this.state.items.map((item) => (
-                        <TodoItem key={item.id} item={item} >{item}</TodoItem>
-                    ))}
-                </ul>
-            </div>
+                        <TodoItem key={item.id} item={item} />
+                      ))}
+                </Grid>
+
+            </Grid>
         )
     }
 }
